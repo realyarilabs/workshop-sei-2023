@@ -102,7 +102,7 @@ if __name__ == "__main__":
         or 21000000
     )
     url = (
-        input("Enter the token url (defaults to ASA):")
+        input("Enter the token url (defaults to https://www.mydharma.network/):")
         or "https://www.mydharma.network/"
     )
     reserve = (
