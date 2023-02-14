@@ -1,0 +1,8 @@
+# SANDNET-v1 via ALGOKIT 
+export ALGOD_TOKEN=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+export ALGOD_ADDR=http://localhost:4001
+
+export SENDER_ADDRESS=QRG7HPU2HOFWJHIXG7IBBBD5P4ALTHB3NGGHTZSFDKJ6OZZNSA6RC5Q4UE
+export SENDER_PRIVATE_KEY=fSA6j/EDm7zfAdwSiRKVBq2SrTakyj2uqX4K0/kUfU6ETfO+mjuLZJ0XN9AQhH1/ALmcO2mMeeZFGpPnZy2QPQ==
+export SENDER_MENEMONIC="autumn trigger shy disease current upset auction swing car enforce enhance spare census problem canvas skirt sibling pluck dismiss cost victory early initial able female"
+

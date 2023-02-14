@@ -1,0 +1,90 @@
+#pragma version 5
+
+// if Txn.ApplicationID == 0:
+  txn ApplicationID
+  pushint 0
+  ==
+  bz l0_end
+  // then:
+    // Create app
+    // app_global_put("counter", 0)
+    pushbytes "counter"
+    pushint 0
+    app_global_put
+    // exit(1)
+    pushint 1
+    return
+  l0_end: // end
+
+// if Txn.OnCompletion == UpdateApplication:
+  txn OnCompletion
+  pushint 4 // UpdateApplication
+  ==
+  bz l1_end
+  // then:
+    // assert(Txn.Sender == Global.CreatorAddress)
+    txn Sender
+    global CreatorAddress
+    ==
+    assert
+    // exit(1)
+    pushint 1
+    return
+  l1_end: // end
+
+// assert(Txn.OnCompletion == NoOp)
+txn OnCompletion
+pushint 0 // NoOp
+==
+assert
+
+// int counter = app_global_get("counter") [slot 0]
+pushbytes "counter"
+app_global_get
+store 0 // counter
+// counter = counter + 1
+load 0 // counter
+pushint 1
++
+store 0 // counter
+// app_global_put("counter", counter)
+pushbytes "counter"
+load 0 // counter
+app_global_put
+
+// if counter == 10:
+  load 0 // counter
+  pushint 10
+  ==
+  bz l2_elif_0
+  // then:
+    // inner_txn:
+    itxn_begin
+      // TypeEnum: Pay
+      pushint 1 // Pay
+      itxn_field TypeEnum
+      // Receiver: Txn.Sender
+      txn Sender
+      itxn_field Receiver
+      // Amount: 10000000
+      pushint 10000000
+      itxn_field Amount
+    itxn_submit
+    // end inner_txn
+  b l2_end
+  l2_elif_0:
+  // elif counter > 10:
+  load 0 // counter
+  pushint 10
+  >
+  bz l2_end
+    // exit(0)
+    pushint 0
+    return
+  l2_end: // end
+
+// exit(1)
+pushint 1
+return
+
+
