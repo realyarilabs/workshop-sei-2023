@@ -6,6 +6,8 @@ Then fill `SENDER_MNEMONIC` with the wallet mnemonic for the wallet you created.
 
 The `ALGOD_TOKEN` and the `ALGOD_ADDRESS` present on the `.envrc_example` are already correct for sandbox development.
 
+**Note:** You must install `py-algorand-sdk` with `pip install py-algorand-sdk`.
+
 ## Generate ASAs or NFTs
 
 To generate an ASA or a NFT you can simply run the `generate.py` script after completing the setup.

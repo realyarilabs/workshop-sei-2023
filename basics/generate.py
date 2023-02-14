@@ -85,8 +85,11 @@ if __name__ == "__main__":
         or "ASA"
     ).lower()
 
+    default_decimals = 6
+
     if asa_or_nft == "nft":
         asa_or_nft = "NFT"
+        default_decimals = 0
     else:
         asa_or_nft = "ASA"
 
@@ -96,7 +99,7 @@ if __name__ == "__main__":
         input("Enter the token name (defaults to Mega SEI Token):") or "Mega SEI Token"
     )
     symbol = input("Enter the token symbol (defaults to MST):") or "MST"
-    decimals = input("Enter the token decimals (defaults to 6):") or 6
+    decimals = input("Enter the token decimals (defaults to {}):".format(default_decimals)) or default_decimals
     total = (
         input("Enter the token total supply (defaults to 21 million :wink:):")
         or 21000000
@@ -122,6 +125,7 @@ if __name__ == "__main__":
         or sender["address"]
     )
 
+    decimals = int(decimals)
     total = total * 10**decimals
 
     # If the user wants to create an NFT, we could add the @arc3 suffix to the name so explorers identify it as an NFT
