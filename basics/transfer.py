@@ -81,11 +81,12 @@ if __name__ == "__main__":
     ).lower()
 
     asa = False
+    algo = False
 
     if asa_or_algo == "asa":
         asa = True
     else:
-        asa = False
+        algo = True
 
     print("\nTransfering ASA" if asa else "\nTransfering ALGO")
     print("\nInput transfer details below\n")
