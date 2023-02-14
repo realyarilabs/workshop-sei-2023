@@ -126,7 +126,7 @@ if __name__ == "__main__":
     )
 
     decimals = int(decimals)
-    total = total * 10**decimals
+    total = int(total) * 10**decimals
 
     # If the user wants to create an NFT, we could add the @arc3 suffix to the name so explorers identify it as an NFT
     if asa_or_nft == "NFT":
